@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  
   const [localState, setLocalState] = useReducer(
     (prevState, newState) => {
       console.log(prevState, newState, "prevState  and newState-----");
@@ -66,8 +67,13 @@ const LoginForm = () => {
 
         dispatch(loginStore({ token, user }));
         toast.success("Logged in Successfully");
-        //only admin can visit dashboard
-        navigate("/app/userform");
+        
+        if ( role === "admin" ) {
+          navigate("/app/dashboard")
+        }
+        if ( role === "user" ) {
+          navigate( "/app/userform" );
+        }
       })
       .catch((error) => {
         handleError(error);

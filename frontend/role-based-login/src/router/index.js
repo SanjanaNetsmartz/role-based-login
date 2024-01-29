@@ -13,8 +13,9 @@ import { get } from "../utils/lodash";
 
 const MainRoute = () => {
   // Initial page, we can change this based on user role in future
-   const { user } = RoleBasedLoginCurrentUser();
-  const userRole=get(user,"role","");
+  const { user } = RoleBasedLoginCurrentUser();
+  const userRole = get(user, "role", "");
+  console.log(userRole, "this is the userRole--------");
   const defaultPath = routes.app.login;
 
   return (
@@ -27,24 +28,11 @@ const MainRoute = () => {
           </WithoutAuth>
         }
       />
-      {userRole === "admin" && (
-        <Route exact path={routes.app.dashboard}
-          element={
-            <RequireAuth>
-              <DashboardPage />
-            </RequireAuth>} />
-      )}
+      <Route exact path={routes.app.dashboard} element={<DashboardPage />} />
 
-      {userRole === "user" && (
-        <Route exact path={routes.app.userForm}
-          element={
-            <RequireAuth>
-              <UserFormPage />
-            </RequireAuth>} />
-      )}
-    
+      <Route exact path={routes.app.userForm} element={<UserFormPage />} />
     </Routes>
   );
-}
+};
 
-  export default MainRoute
+export default MainRoute;

@@ -15,15 +15,12 @@ import { get } from "../utils/lodash";
 // export const isEmail = (email) => REGEX.IS_EMAIL.test(email);
 
 export const RoleBasedLoginCurrentUser = () => {
-  const { loginToken, user } = useSelector( ( state ) => {
-    console.log( "loginToken and user-----------------", loginToken, user )
+  const { loginToken, user } = useSelector((state) => {
     return {
-      loginToken: get( state, "LoginSlice.loginToken", null ),
-      user: get( state, "loginSlice.user", null )
+      loginToken: get(state, "LoginSlice.loginToken", null),
+      user: get(state, "loginSlice.user", null),
     };
-  },
-    shallowEqual
-  );
-  const localStorageToken = localStorage.getItem( "token" || loginToken );
-  return { localStorageToken, user}
-}
+  }, shallowEqual);
+  const localStorageToken = localStorage.getItem("token" || loginToken);
+  return { localStorageToken, user };
+};
