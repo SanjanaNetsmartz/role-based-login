@@ -11,8 +11,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
+  display: -ms-flexbox;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
+  padding: 30px 10px;
   min-height: 100vh;
   background: url("./assets/examm.jpg") no-repeat;
   background-size: cover;

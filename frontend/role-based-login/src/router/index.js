@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { WithoutAuth } from "./WithoutAuth";
 
 import LoginPage from "../../src/pages/LoginPage";
@@ -20,6 +20,7 @@ const MainRoute = () => {
 
   return (
     <Routes>
+       <Route path="/" element={<Navigate to={defaultPath} />} />
       <Route
         path={defaultPath}
         element={
